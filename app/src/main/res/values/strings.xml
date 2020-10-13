@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MovieListTest</string>
+    <string name="refresh">refresh</string>
+    <string name="no_movies_found">No Movies Found</string>
+    <string name="oops">Oops!</string>
+</resources>
