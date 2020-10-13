@@ -8,7 +8,9 @@ Load Movies from TMDB API and poppulate a list on your device
 
 ## Installation
 Clone this repository with the following command
-`git clone https://github.com/hmalik144/MovieListTest/`
+
+    `git clone https://github.com/hmalik144/MovieListTest/`
+
 then open with android studio.
 
 ## Features
