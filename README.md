@@ -1,17 +1,17 @@
 # MovieListTest
 Load Movies from TMDB API and poppulate a list on your device
 
-## Requirements
-
- - Minimum android version 23
- - Permissions : Internet, Network state
-
 ## Installation
 Clone this repository with the following command
 
     git clone https://github.com/hmalik144/MovieListTest/
 
 then open with android studio.
+
+## Requirements
+
+ - Minimum android version 23
+ - Permissions : Internet, Network state
 
 ## Features
 
