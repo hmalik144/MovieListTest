@@ -21,6 +21,10 @@ then open with android studio.
  - Data persistence with room
  - Picasso for image caching
  - Recycler view for easy user list display
+ 
+## If I had more time
+ 
+ - Add animations for recycler list population
 
 ## Architectural Pattern
 
