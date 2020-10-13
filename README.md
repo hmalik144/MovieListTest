@@ -1,5 +1,5 @@
 # MovieListTest
-Load Movies from TMDB API and poppulate a list on your device
+Load Movies from TMDB API and populate a list on your device. You can favourite/unfavourite movies.
 
 ## Installation
 Clone this repository with the following command
