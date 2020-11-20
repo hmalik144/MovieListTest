@@ -2,16 +2,12 @@ package com.example.h_mal.movielisttest.ui.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.test.espresso.idling.CountingIdlingResource
-import com.example.h_mal.movielisttest.application.MovieListApplication.Companion.idlingResources
 import com.example.h_mal.movielisttest.data.network.response.MoviesResponse
 import com.example.h_mal.movielisttest.data.repository.Repository
 import com.example.h_mal.movielisttest.data.room.MovieEntity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -20,7 +16,8 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import java.io.IOException
-import javax.annotation.meta.When
+
+
 
 class MainViewModelTest {
 
@@ -31,9 +28,6 @@ class MainViewModelTest {
 
     @Mock
     lateinit var repository: Repository
-
-    @Mock
-    lateinit var observer: Observer<List<MovieEntity>>
 
     @Before
     fun setUp() {
@@ -55,12 +49,9 @@ class MainViewModelTest {
 
         //THEN
         viewModel.loadMovies()
-        delay(200)
-        viewModel.operationState.observeForever{
-            it.getContentIfNotHandled()?.let {result ->
-                kotlin.test.assertFalse { result }
-            }
-        }
+        delay(50)
+
+        kotlin.test.assertFalse { viewModel.operationState.value?.getContentIfNotHandled()!! }
     }
 
     @Test
@@ -70,11 +61,8 @@ class MainViewModelTest {
 
         // THEN
         viewModel.loadMovies()
-        viewModel.operationError.observeForever{
-            it.getContentIfNotHandled()?.let {result ->
-                assertEquals(result, "throwed")
-            }
-        }
+        delay(50)
+        assertEquals(viewModel.operationError.value?.getContentIfNotHandled()!!, "throwed")
     }
 
     @Test
@@ -83,30 +71,25 @@ class MainViewModelTest {
         val mockApiResponse = Mockito.mock(MoviesResponse::class.java)
 
         //WHEN
-        Mockito.`when`(repository.getMoviesFromApi(2)).thenReturn(mockApiResponse)
         Mockito.`when`(repository.getCurrentPage()).thenReturn(2)
+        Mockito.`when`(repository.getMoviesFromApi(2)).thenReturn(mockApiResponse)
 
         //THEN
-        viewModel.loadMovies()
-        delay(200)
-        viewModel.operationState.observeForever{
-            it.getContentIfNotHandled()?.let {result ->
-                kotlin.test.assertFalse { result }
-            }
-        }
+        viewModel.loadMoreMovies()
+        delay(50)
+        kotlin.test.assertFalse { viewModel.operationState.value?.getContentIfNotHandled()!! }
     }
 
     @Test
     fun getMoreFromRepository_unsuccessfulReturn() = runBlocking{
         // WHEN
+        Mockito.`when`(repository.getCurrentPage()).thenReturn(2)
         Mockito.`when`(repository.getMoviesFromApi(2)).thenAnswer{ throw IOException("throwed") }
 
         // THEN
-        viewModel.loadMovies()
-        viewModel.operationError.observeForever{
-            it.getContentIfNotHandled()?.let {result ->
-                assertEquals(result, "throwed")
-            }
-        }
+        viewModel.loadMoreMovies()
+        delay(50)
+        assertEquals(viewModel.operationError.value?.getContentIfNotHandled()!!, "throwed")
+
     }
 }

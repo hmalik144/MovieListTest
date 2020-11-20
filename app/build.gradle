@@ -58,6 +58,10 @@ dependencies {
     //mock websever for testing retrofit responses
     testImplementation "com.squareup.okhttp3:mockwebserver:4.6.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    // Mockk
+    def mockk_ver = "1.10.2"
+    testImplementation "io.mockk:mockk:$mockk_ver"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_ver"
 
     //mockito and livedata testing
     testImplementation 'org.mockito:mockito-inline:2.13.0'
@@ -90,4 +94,7 @@ dependencies {
 
     // Circle Image View
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    // extra
+    testImplementation 'org.json:json:20180813'
 }

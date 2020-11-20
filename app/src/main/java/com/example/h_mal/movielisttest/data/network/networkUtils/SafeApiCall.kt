@@ -9,7 +9,7 @@ import java.io.IOException
  * Abstract class for extracting <T> from Retrofit Response<T>
  * Or throw IOException if the API call fails
  */
-abstract class ResponseUnwrap {
+abstract class SafeApiCall {
 
     @Suppress("BlockingMethodInNonBlockingContext")
     suspend fun <T : Any> responseUnwrap(

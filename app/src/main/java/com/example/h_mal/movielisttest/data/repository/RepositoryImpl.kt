@@ -1,7 +1,7 @@
 package com.example.h_mal.movielisttest.data.repository
 
 import com.example.h_mal.movielisttest.data.network.MoviesApi
-import com.example.h_mal.movielisttest.data.network.networkUtils.ResponseUnwrap
+import com.example.h_mal.movielisttest.data.network.networkUtils.SafeApiCall
 import com.example.h_mal.movielisttest.data.network.response.MoviesResponse
 import com.example.h_mal.movielisttest.data.network.response.ResultsItem
 import com.example.h_mal.movielisttest.data.prefs.PreferenceProvider
@@ -12,7 +12,7 @@ class RepositoryImpl(
     private val api: MoviesApi,
     private val database: MoviesRoomDatabase,
     private val preferences: PreferenceProvider
-) : Repository, ResponseUnwrap() {
+) : Repository, SafeApiCall() {
 
 
     override suspend fun getMoviesFromApi(pageNumber: Int): MoviesResponse? {

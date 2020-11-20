@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.h_mal.movielisttest.R
 import com.example.h_mal.movielisttest.data.models.Movie
 import com.example.h_mal.movielisttest.utils.loadImage
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 /**

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.h_mal.movielisttest.R
 import com.example.h_mal.movielisttest.utils.*
 import kotlinx.android.synthetic.main.empty_view_item.view.*

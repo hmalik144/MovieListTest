@@ -6,7 +6,8 @@ import com.example.h_mal.movielisttest.data.prefs.PreferenceProvider
 import com.example.h_mal.movielisttest.data.room.MoviesRoomDatabase
 import kotlinx.coroutines.runBlocking
 import okhttp3.ResponseBody
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

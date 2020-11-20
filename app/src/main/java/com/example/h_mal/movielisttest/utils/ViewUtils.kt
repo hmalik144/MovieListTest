@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.h_mal.movielisttest.R
 import com.squareup.picasso.Picasso
 
 fun View.show() {
